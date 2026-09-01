@@ -3,35 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Stuck | The coming of democracy | Kula Revise</title>
+<title>What Stuck | The Coming of Democracy in South Africa | Kula Revise</title>
 <style>
-  :root {
-    /* Sunset clause: dark. Ink blue ground, two accents. */
-    --paper: #04161C;     /* page ground */
-    --sheet: #0A2630;     /* card sheet */
-    --white: #113842;     /* inner panels, sources, explanations */
-    --ink: #DFF6FA;       /* text */
-    --ink-soft: #A9CDD6;
-    --flame: #2AD9F0;     /* accent one: navigation and emphasis */
-    --on-flame: #04161C;  /* text on a solid flame block */
-    --leaf: #FF6B9D;      /* accent two: anything the learner earned */
-    --on-leaf: #04161C;   /* text on a solid leaf block */
-    --hair: rgba(223,246,250,0.18);
-    --rail: rgba(223,246,250,0.12);
-    --tint: rgba(255,107,157,0.09);
-    --tint-rule: rgba(255,107,157,0.40);
-    --slot-bg: rgba(223,246,250,0.04);
-    --chipA-bg: rgba(42,217,240,0.20); --chipA-fg: #8FE8F6;
-    --chipB-bg: rgba(139,176,185,0.16); --chipB-fg: #BEDDE4;
-    --chipN-bg: rgba(223,246,250,0.07); --chipN-fg: #9FC2CC;
-    --ev3-bg: rgba(255,107,157,0.14); --ev3-fg: #FF6B9D;
-    --ok-bg: rgba(147,217,138,0.18);
-    --bad-bg: rgba(255,138,110,0.12); --bad-border: #FF8A6E;
-    --btn-hover: #6FE6F6;
-    --start-hover: #0E2F38;
-    --sans: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --serif: Georgia, 'Times New Roman', serif;
-  }
+  /* The quiz shells carried the dark palette in :root as well as in
+   body.dark, so they had no light mode at all: a learner on a light
+   phone opened a black quiz and the toggle did nothing. The light
+   values are the lesson palette, which uses the same token set. */
+:root {--paper: #DCF0F4;      
+      --sheet: #F6FDFE;      
+      --white: #C2E3EA;      
+      --ink: #08191E;        
+      --ink-soft: #486268;
+      --flame: #00657A;      
+      --on-flame: #F6FDFE;   
+      --leaf: #B51554;       
+      --on-leaf: #F6FDFE;    
+      --hair: rgba(8,25,30,0.20);
+      --rail: rgba(8,25,30,0.13);
+      --tint: rgba(181,21,84,0.08);
+      --tint-rule: rgba(181,21,84,0.38);
+      --slot-bg: rgba(255,255,255,0.62);
+      --chipA-bg: #D6EFF4; --chipA-fg: #004F60;
+      --chipB-bg: #D2E6EB; --chipB-fg: #2E4A50;
+      --chipN-bg: #DCE9ED; --chipN-fg: #465C61;
+      --ev3-bg: #FBDCE7; --ev3-fg: #950F44;
+      --ok-bg: rgba(42,99,53,0.13);
+      --bad-bg: rgba(165,52,27,0.09); --bad-border: #A5341B;
+      --btn-hover: #004F60;
+      --start-hover: #03121A;
+      --sans: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --serif: Georgia, 'Times New Roman', serif;}
   /* Alternate mode. The series identity always lives in :root. This is its inversion. */
   body.dark {
       /* Cool slate. The navy ground inverted into blue paper, not bone,
@@ -248,6 +249,11 @@ body.dark .explanation.ok, body.dark .explanation.ok .expl-text,
 body.dark .explanation.no, body.dark .explanation.no .expl-text{ color:var(--mark-ink) !important; }
 .explanation.ok .expl-label, body.dark .explanation.ok .expl-label{ color:var(--ok) !important; }
 .explanation.no .expl-label, body.dark .explanation.no .expl-label{ color:var(--no) !important; }
+
+/* Two dark-mode pairs found by walking both modes: the skip line at 2.83 and
+   the exit tag at 4.00, both too dim against their grounds. */
+body.dark .sk-t, body.dark .btn-skip .sk-t{ color:#8AA5AC !important; }
+body.dark .evtag.exit{ color:#FFA6C4 !important; }
 </style>
 </head>
 <body>
@@ -740,7 +746,10 @@ buildPicker();
 
 (function(){document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#kdone-btn")){kulaEmbed("advance");}});})();
 
-var K="kula-theme-2";var SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>";var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>";function paint(){var d=document.body.classList.contains("dark");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode";}window.kulaToggle=function(){document.body.classList.toggle("dark");try{localStorage.setItem(K,document.body.classList.contains("dark")?"dark":"light")}catch(e){}paint();};try{var st=localStorage.getItem(K);if(st==="dark")document.body.classList.add("dark");else if(st!=="light"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)document.body.classList.add("dark");}catch(e){}paint();
+/* This block read its own key while the other boot block and the
+     contract use kula-mode, so a stored light choice was invisible to
+     the toggle and the device preference won instead. */
+  var K="kula-mode";var SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>";var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>";function paint(){var d=document.body.classList.contains("dark");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode";}window.kulaToggle=function(){document.body.classList.toggle("dark");try{localStorage.setItem(K,document.body.classList.contains("dark")?"dark":"light")}catch(e){}paint();};try{var st=localStorage.getItem(K);if(st==="dark")document.body.classList.add("dark");else if(st!=="light"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)document.body.classList.add("dark");}catch(e){}paint();
 </script>
 
   
